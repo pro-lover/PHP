@@ -19,6 +19,7 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                sudo apt-get install php7.2
             }
 
             .full-height {
@@ -79,7 +80,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    WELCOME TO MY PHP LARAVEL-5.4 EXPERINCE
+                    WELCOME TO MY PHP  
                 </div>
 
                 <div class="links">
