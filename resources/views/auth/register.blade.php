@@ -1,35 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+<div class="container-fluid">
+  <div class="container ">
+            <div class="panel panel-default" style="background-color:#ffffffb5">
+                <div class="panel-heading" style="text-align:center;font-size:30px;background-color:#ffffff21"><strong>
+                    Registration
+                </strong>
+                   </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
+                        <div class="row">
+                            <div class="group{{ $errors->has('name') ? ' has-error' : '' }}">
+                             <div class="col-md-6">
+                                    <label for="name" class="control-label">Name</label>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                             </div>
                             </div>
-                        </div>
+                        
                         <!-- surname -->
 
                         <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
-                            <label for="surname" class="col-md-4 control-label">surname</label>
-
                             <div class="col-md-6">
+                                    <label for="surname" class="control-label">surname</label>
                                 <input id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}" required>
 
                                 @if ($errors->has('surname'))
@@ -41,9 +42,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
+                                    <label for="email" class="control-label">E-Mail Address</label>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -55,10 +56,9 @@
                         </div>
                         <!-- department -->
                         <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            <label for="department" class="col-md-4 control-label">department</label>
-
                             <div class="col-md-6">
-                                <input id="department" type="text" class="form-control" name="department" value="{{ old('department') }}" required>
+                                    <label for="department" class="control-label">phone</label>
+                                <input id="department" type="number" class="form-control" name="department" value="{{ old('department') }}" required>
 
                                 @if ($errors->has('department'))
                                     <span class="help-block">
@@ -69,11 +69,9 @@
                         </div>
                         <!-- province-->
                         <div class="form-group{{ $errors->has('province') ? ' has-error' : '' }}">
-                            <label for="province" class="col-md-4 control-label">province</label>
-
                             <div class="col-md-6">
+                                    <label for="province" class="control-label">province</label>
                                 <input id="province" type="text" class="form-control" name="province" value="{{ old('province') }}" required>
-
                                 @if ($errors->has('province'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('province') }}</strong>
@@ -83,9 +81,9 @@
                         </div>
                         <!-- municipality -->
                         <div class="form-group{{ $errors->has('municipality') ? ' has-error' : '' }}">
-                            <label for="municipality" class="col-md-4 control-label">municipality</label>
 
                             <div class="col-md-6">
+                                <label for="municipality" class="control-label">municipality</label>
                                 <input id="municipality" type="text" class="form-control" name="municipality" value="{{ old('municipality') }}" required >
 
                                 @if ($errors->has('municipality'))
@@ -94,11 +92,10 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                      </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
                             <div class="col-md-6">
+                                    <label for="password" class="control-label">Password</label>
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -108,26 +105,27 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
                             <div class="col-md-6">
+                                    <label for="password-confirm" class="control-label">Confirm Password</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
+                       
+                 </div>
+                      {{-- Registration button --}}
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block btn-primary-spacing" style="margin-left: -16%;margin-top: 6%">
+                                Register
+                            </button>
                         </div>
+                    </div>   
+
+                       
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
+  </div>
 </div>
 @endsection

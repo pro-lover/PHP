@@ -18,7 +18,9 @@
     
     
 </head>
-<body>
+<body style="background-image:url(/img/view.jpg);
+background-position: center;
+background-repeat: no-repeat;background-size: cover">
 
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
