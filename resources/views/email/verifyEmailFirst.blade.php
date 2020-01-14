@@ -1,0 +1,1 @@
+<h1>verity email to etivate account</h1>
