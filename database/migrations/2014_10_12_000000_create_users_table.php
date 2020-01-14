@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('province');
             $table->string('municipality');
             $table->string('password');
+            $table->string('verifyToken');
+            $table->boolean('status');
             $table->rememberToken();
             $table->timestamps();
         });

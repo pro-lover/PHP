@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use Mail;
+use App\Mail\verifyEmail;
 
 class RegisterController extends Controller
 {
@@ -62,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
@@ -70,6 +73,22 @@ class RegisterController extends Controller
             'province' => $data['province'],
             'municipality' => $data['municipality'],
             'password' => bcrypt($data['password']),
+            'verifyToken'=> Str::random(40),
         ]);
+        $thisUser = User::findOrFail($user->id);
+        $this->sendEmail($thisUser);
+        return $user;
+    }
+    public function sendEmail($thisUser)
+    {
+        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
+    }
+    public function verifyEmailFirst()
+    {
+        return view('email.verifyEmailFirst'); 
+    }
+    public function sendEmailDone($email,$verifyToken)
+    {
+        return "[name] you account has been registered click here to login [linkor button]";
     }
 }

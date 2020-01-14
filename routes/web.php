@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get("viewProfile", 'viewProfileContoller@index');
 Route::get("editProfile", 'editProfileController@index');
 Route::get("uploadPicture", 'uploadPictureController@index');
+Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
