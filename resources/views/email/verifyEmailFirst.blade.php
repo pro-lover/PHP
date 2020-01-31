@@ -1,1 +1,1 @@
-<h1>verity email to etivate account</h1>
+<h1>verity email to activate account</h1>
