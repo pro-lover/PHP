@@ -89,6 +89,7 @@ class RegisterController extends Controller
     }
     public function sendEmailDone($email,$verifyToken)
     {
-        return "[name] you account has been registered click here to login [linkor button]";
+
+        return "[name] you account has been registered click here to login [linker button]";
     }
 }
